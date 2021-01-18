@@ -1,7 +1,7 @@
-all: pcap-stat
+all: packet-stat
 
-pcap-stat: main.o printflow.o flow.o tcpsession.o
-	g++ -o pcap-stat main.o printflow.o tcpsession.o flow.o -lpcap
+packet-stat: main.o printflow.o flow.o tcpsession.o
+	g++ -o packet-stat main.o printflow.o tcpsession.o flow.o -lpcap
 
 tcpsession.o: tcpsession.cpp tcpsession.h
 	g++ -c -o tcpsession.o tcpsession.cpp -lpcap
@@ -16,4 +16,4 @@ flow.o: flow.cpp flow.h tcpsession.h
 	g++ -c -o flow.o flow.cpp -lpcap
 
 clean:
-	rm -f pcap-stat *.o
+	rm -f packet-stat *.o
